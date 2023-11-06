@@ -1,7 +1,7 @@
 
 /*=============================++++ HTML ++++=================================*/
 <template>
-    <form @submit.prevent="signup" enctype="multipart/form-data">
+    <form @submit.prevent="registration" enctype="multipart/form-data">
         <h3>Inscription</h3>
         <div class="auth__field__list">
             <div class="auth__field__list__item__two">
@@ -68,12 +68,14 @@
 
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
-import { useRegistrationsStore } from '@/stores/registration';
+
 import { toast } from 'vue3-toastify'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed} from 'vue'
 import { required, email, sameAs } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-const { registration } = useRegistrationsStore()
+import http from "@/libs/http";
+import router from "@/router";
+
 const userRegistredData = ref({
     avatar: '',
     username: '',
@@ -127,16 +129,36 @@ const file = (event: any) => {
 
 const isSigninDataValid = useVuelidate(userRegistredRequired, userRegistredData)
 
-async function signup() {
-    if (isSigninDataValid.value) {
-        const dataValid = await isSigninDataValid.value.$validate()
-        if (dataValid) {
-            registration(userRegistredData.value)
-        } else {
-            toast.error('Oops... Erreur !')
-        }
+const registration = async () =>{
+    const dataValid = await isSigninDataValid.value.$validate()
+        if(dataValid){
+            http.post('/auth/signup', userRegistredData.value,{
+                headers: {
+                    'Content-Type': 'multipart/form-data' // Spécifiez le type de contenu comme 'multipart/form-data'
+                }
+            })
+            .then((response)=>{
+               
+                toast.info(response.data) 
+                let timeoutId = 4000
+                setTimeout(() => { 
+                    router.replace('/activate-account')
+                }, timeoutId )
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 400) {
+                    // Extrait le message d'erreur de la réponse.
+                    const errorResponse = error.response.data
+                    toast.error(errorResponse)
+
+                } else {
+                    toast.error(error.message)
+                }
+            })
+        }else {
+            toast.error('Oops... Données Indisponibles !')
+        }  
     }
-} 
 </script>
 
 

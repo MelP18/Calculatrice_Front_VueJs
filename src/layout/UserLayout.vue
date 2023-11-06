@@ -17,7 +17,7 @@
                                 </div>
                                 <span class="line"></span>
                                 <div class="user__connect__username">
-                                    <h4 id="username" v-if=" userData">{{  userData.username }}</h4>
+                                    <h4 id="username" v-if="userData">{{ userData.username }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -37,18 +37,16 @@
 <script lang="ts" setup>
 import IconPlatform from '@/components/IconPlatform.vue'
 import Sidebar from '@/components/Sidebar.vue';
-import { onMounted,toRefs } from 'vue';
 import { RouterView } from "vue-router";
-import { storeToRefs } from "pinia";
-import { toast } from 'vue3-toastify';
-import { useConnectionStore } from '@/stores/connection';
+import {ref} from "vue";
 
-const {userData} =  storeToRefs(useConnectionStore())
-const {user} = useConnectionStore()
-//window.location.reload()
-onMounted(async () => {
-    await user();
-});
+import {useUserStore} from '@/stores/user'
+import { storeToRefs } from 'pinia'
+
+const { userData } = storeToRefs(useUserStore())
+const { user } = useUserStore()
+user()
+
 </script>
 /*=============================++++ CSS ++++=================================*/
 

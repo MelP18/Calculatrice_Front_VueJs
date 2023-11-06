@@ -2,7 +2,7 @@
 /*=============================++++ HTML ++++=================================*/
 <template>
     
-    <form @submit.prevent="login">
+    <form @submit.prevent="connection">
         <h3>Connexion</h3>
         <div class="auth__field__list" style="height: 111px;">
             <div class="auth__field__list__item">
@@ -34,11 +34,12 @@
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
 import{toast} from 'vue3-toastify'
-import { useConnectionStore } from '@/stores/connection'
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { required, email} from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-const { connection } = useConnectionStore()
+import http from "@/libs/http";
+import router from "@/router";
+
 const userConnectData = ref({
     email: '',
     password: '',
@@ -57,14 +58,33 @@ const userConnectRequired = computed(() => {
 })
 
 const isLoginDataValid = useVuelidate(userConnectRequired, userConnectData)
-async function login() {
-    if (isLoginDataValid) {
-        const dataValid  = await isLoginDataValid.value.$validate()
+
+const connection = async () => {
+    const dataValid  = await isLoginDataValid.value.$validate()
         if(dataValid){
-            await connection(userConnectData.value)
-        }else{
-            toast.error('Oops... Erreur !')
-        }
+            http.post('/auth/signin', userConnectData.value)
+            .then((response)=>{
+                const accessToken = response.data
+                http.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+                localStorage.setItem('tokenUser', accessToken)
+                toast.success('Connexion Etablie !')
+                let timeoutId = 3000
+                setTimeout(() => { 
+                    router.replace('/user') 
+                }, timeoutId )
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 400) {
+                    // Extrait le message d'erreur de la réponse.
+                    const errorResponse = error.response.data
+                    toast.error(errorResponse)
+
+                } else {
+                    toast.error(error.message)
+                }
+            })
+        }else {
+            toast.error('Oops... Données Indisponibles !')
+        }  
     }
-}
 </script>

@@ -45,12 +45,14 @@
 import Function from '@/components/Function.vue'
 import SimpleCalculation from '@/components/SimpleCalculation.vue'
 import BtnOther from '@/components/BtnOther.vue'
+import { storeToRefs } from 'pinia'
 import { userOpeationStore } from '@/stores/operation'
-import { storeToRefs } from "pinia";
-import { useConnectionStore } from '@/stores/connection';
-const { userData } = storeToRefs(useConnectionStore())
-const { user } = useConnectionStore()
+import { useUserStore } from '@/stores/user';
+const { userData } = storeToRefs(useUserStore())
+const { user } = useUserStore()
 user()
+
+
 const { addCalculation } = userOpeationStore()
 import { ref } from 'vue'
 /*================== CALCULATION AND PUSH IN CALCULATIONDB ===============*/

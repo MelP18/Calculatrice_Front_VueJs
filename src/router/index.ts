@@ -61,12 +61,12 @@ const router = createRouter({
                     /*  beforeEnter:[function blocked (to,from){
                          return ('/signup')
                        }], */
-                },
+                }/* ,
                 {
                     path: 'profile',
                     name: 'Profile',
                     component: Profile
-                },
+                } */,
                 {
                     path: 'logout',
                     name: 'Logout',

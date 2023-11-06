@@ -1,7 +1,7 @@
 /*=============================++++ HTML ++++=================================*/
 <template>
    
-    <form @submit.prevent="verifyCode">
+    <form @submit.prevent="activateAccount">
         <h3>Activation de Compte</h3>
         <div class="auth__field__list" style="height: 111px;">
             <div class="auth__field__list__item">
@@ -33,12 +33,12 @@
 
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
-import { ref,computed, reactive } from 'vue'
-import { useActivateAccountStore } from '@/stores/activateAccount';
+import { ref,computed} from 'vue'
 import { toast } from 'vue3-toastify';
 import { required, email, minLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-const { activateAccount } = useActivateAccountStore()
+import http from "@/libs/http";
+import router from "@/router";
 
 const activateAccountData = ref({
         email:'',
@@ -59,16 +59,31 @@ const activateAccountRequired = computed(() => {
 
 const isCodeValid = useVuelidate(activateAccountRequired, activateAccountData)
 
-async function verifyCode (){
-    if(isCodeValid.value){
-        const validCode = await isCodeValid.value.$validate()
-        if(validCode){
-          await activateAccount(activateAccountData.value)
-        }else{
-            toast.error('Oops... Erreur !')
+const activateAccount = async () => {
+    const validCode = await isCodeValid.value.$validate()
+        if (validCode) {
+            http.post('/auth/verify-code', activateAccountData.value)
+                .then((response) => {
+                    toast.info(response.data)
+                    let timeoutId = 4000
+                    setTimeout(() => {
+                        router.replace('/signin')
+                    }, timeoutId)
+                })
+                .catch(error => {
+                    if (error.response && error.response.status === 400) {
+                        // Extrait le message d'erreur de la réponse.
+                        const errorResponse = error.response.data
+                        toast.error(errorResponse)
+
+                    } else {
+                        toast.error(error.message)
+                    }
+                })
+        } else {
+            toast.error('Oops... Données Indisponibles !')
         }
     }
-}
 </script>
 
 

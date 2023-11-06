@@ -8,12 +8,12 @@
                         <h4>Calculatrice</h4>
                     </RouterLink>
                 </li>
-                <li class="sidebar__menu__list__item">
+                <!-- <li class="sidebar__menu__list__item">
                     <RouterLink to="/user/profile" class="sidebar__menu__logo">
                         <span class="mdi mdi-account"></span>
                         <h4>Profile</h4>
                     </RouterLink>
-                </li>
+                </li> -->
                 <li class="sidebar__menu__list__item">
                     <RouterLink to="/user/historique" class="sidebar__menu__logo">
                         <span class="mdi mdi-view-list"> </span>
