@@ -29,7 +29,7 @@
                 <hr>
             </div>
             <div class="main__table">
-                <table>
+                <table v-if="userCalculation">
                     <thead>
                         <tr>
                             <th> Jours </th>
