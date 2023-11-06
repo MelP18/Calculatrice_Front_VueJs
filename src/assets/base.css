@@ -246,8 +246,6 @@ input[type=file]::file-selector-button {
     .auth__field__list__item__two{
         flex-direction: column;
     }
-    .auth{
-        width: 100%;
-    }
+    
 }
 

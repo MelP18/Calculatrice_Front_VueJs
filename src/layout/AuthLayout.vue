@@ -123,17 +123,21 @@ import SignInformation from '../components/SignInformation.vue';
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
-@media(max-width: 992px){
-    .main__foreground__content__left{
-        display: none;
-    }
-}
 
 .auth {
     width: 75%;
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+@media(max-width: 992px){
+    .main__foreground__content__left{
+        display: none;
+    }
+    .auth{
+        width: 100%;
+    }
 }
  
 /*    gap: 25px;
