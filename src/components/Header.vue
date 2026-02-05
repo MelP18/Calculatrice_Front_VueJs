@@ -52,21 +52,31 @@ import base from '@/assets/base.css'
     align-items: center;
     gap: 25px;
 }
+
+@media (max-width: 420px) {
+    .header__mebu__list {
+        flex-direction: column;
+    }
+}
 .header__menu__list__item .menu{
     font-size: 14px;
     font-weight: bold;
     white-space: nowrap;
     color: var(--color-white); 
+    font-family: var(--font-family-light);
+    font-size: 1.2rem;
+    letter-spacing: .5px;
+    transition: all 0.3s ease;
 }
 
 .header__menu__list__item a:hover {
-    color: var(--primary-color);
-    padding-bottom: 2px;
+    color: var(--base-color);
+    padding-bottom: 1px;
     border-bottom: 2px solid var(--base-color);
 
 }
 .router-link-exact-active {
-    color: var(--primary-color) !important; 
-    padding-bottom: 3px;
+    color: var(--base-color) !important; 
+    padding-bottom: 1px;
     border-bottom: 2px solid var(--base-color);
 }</style>

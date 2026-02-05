@@ -52,7 +52,7 @@
 }
 
 .icon__name {
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: bold;
 	color: var(--color-white);
 }</style>

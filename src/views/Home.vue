@@ -24,15 +24,13 @@
                             <span class="mdi mdi-whatsapp"></span>
                             <span class="mdi mdi-linkedin"></span>
                             <span class="mdi mdi-telegram"></span>
+                            <span class="mdi mdi-email"></span>
                         </div>
-                        <div class="foreground__mail">
-                            <a href="#">melpcalcul@gmail.com</a>
-                        </div>
+
                     </div>
                     <div class="main__foreground__content__left__bottom">
-                        <h4>Nous ferons les maths pour vous</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perspiciatis temporibus
-                           dolorum magni!
+                        <h4>Nous faisons les calculs pour vous</h4>
+                        <p>Entrez vos chiffres et obtenez la réponse immédiatement — plus besoin de perdre du temps à calculer. Rapide, simple et fiable, votre assistant vous fournit des résultats précis et faciles à utiliser pour tous vos calculs.
                         </p>
                     </div>
                 </div>
@@ -99,8 +97,10 @@ import IconPlatform from '@/components/IconPlatform.vue';
 
 .main__foreground {
     background-color: var(--color-black);
-    width: 80%;
-    height: 80vh;
+      background-color: var(--base-color);
+
+    width: 90%;
+    height: 85vh;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;  
 }
 .main__foreground__img {
@@ -124,10 +124,10 @@ import IconPlatform from '@/components/IconPlatform.vue';
     height: 40%;
 }
 .main__foreground__content::-webkit-scrollbar{
-    width: 8px;
+    width: 2px;
 }
 .main__foreground__content::-webkit-scrollbar-thumb{
-    background-color: var(--color-black);
+    background-color: var(--color-white);
 }
 .main__foreground__content__left{
     display: flex;
@@ -146,15 +146,19 @@ import IconPlatform from '@/components/IconPlatform.vue';
     gap: 15px;
     color: var(--color-white);
 }
+
 .foreground__icon__left span{
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 8px;
     color: var(--color-white);
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
     border-radius: 50%; 
+    font-size: 1.5rem;
 }
+
 .foreground__mail a{
     cursor: pointer;
     color: var(--color-white);
@@ -163,21 +167,25 @@ import IconPlatform from '@/components/IconPlatform.vue';
 .main__foreground__content__left__bottom{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
 }
 .main__foreground__content__left__bottom h4{
     color: var(--color-white);
-    font-weight: bold;
+    font-family: var(--font-family-light);
+    font-size: 1.5rem;
 }
 .main__foreground__content__left__bottom p{
     color: var(--color-white);
     line-height: 20px;
     font-family: var(--font-family-italic);
+     font-size: 1.1rem;
+    letter-spacing: 1px;
+
 }
 .main__foreground__content__right{
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 5px; 
     width: 100%;
 }
 .main__foreground__content__right__top{
@@ -202,14 +210,15 @@ import IconPlatform from '@/components/IconPlatform.vue';
     justify-content: right;
 }
 .main__foreground__content__right__bottom h4{
-    font-size: 30px;
+    font-size: 1.5rem;
     text-align: right;
     color: var(--color-white);
 }
-@media(max-width:525px){
+@media(max-width:768px){
     .main__foreground__content{
+        padding:30px 25px ;
         flex-direction: column;
-        gap: 15px;
+        gap: 25px;
     }
 }
 </style>

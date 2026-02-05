@@ -10,7 +10,7 @@
                         <span class="mdi mdi-account-circle-outline"></span>
                         <input type="file" @change="file" ref="userRegistredData.avatar">
                     </div>
-                    <span style="color: rgb(156, 18, 18);" v-for="error in isSigninDataValid.avatar.$errors"
+                    <span style="color: rgb(243, 87, 84); font-size: 12px; font-family: 'Montserrat Regular';" v-for="error in isSigninDataValid.avatar.$errors"
                         :key="error.$uid">
                         {{ error.$message }}
                     </span>
@@ -18,9 +18,9 @@
                 <div class="auth__field__list__item">
                     <div class="auth__field__list__item__input">
                         <span class="mdi mdi-account"></span>
-                        <input type="text" v-model="userRegistredData.username" placeholder="pseudonime : qwerty8@5">
+                        <input type="text" v-model="userRegistredData.username" placeholder="pseudonime">
                     </div>
-                    <span style="color: rgb(156, 18, 18);" v-for="error in isSigninDataValid.username.$errors"
+                    <span  style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.username.$errors"
                         :key="error.$uid">
                         {{ error.$message }}
                     </span>
@@ -29,9 +29,9 @@
             <div class="auth__field__list__item">
                 <div class="auth__field__list__item__input">
                     <span class="mdi mdi-email-outline"></span>
-                    <input type="email" v-model="userRegistredData.email" placeholder="email : no_reply@gmail.com">
+                    <input type="email" v-model="userRegistredData.email" placeholder="email">
                 </div>
-                <span style="color: rgb(156, 18, 18);" v-for="error in isSigninDataValid.email.$errors" :key="error.$uid">
+                <span style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.email.$errors" :key="error.$uid">
                     {{ error.$message }}
                 </span>
             </div>
@@ -41,7 +41,7 @@
                         <span class="mdi mdi-lock"></span>
                         <input type="password" v-model="userRegistredData.password" placeholder="mot de passse">
                     </div>
-                    <span style="color: rgb(156, 18, 18);" v-for="error in isSigninDataValid.password.$errors"
+                    <span style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.password.$errors"
                         :key="error.$uid">
                         {{ error.$message }}
                     </span>
@@ -50,9 +50,9 @@
                     <div class="auth__field__list__item__input">
                         <span class="mdi mdi-lock"></span>
                         <input type="password" v-model="userRegistredData.confirm_password"
-                            placeholder="confirmez mot de passe">
+                            placeholder="confirmez">
                     </div>
-                    <span style="color: rgb(156, 18, 18);" v-for="error in isSigninDataValid.confirm_password.$errors"
+                    <span style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.confirm_password.$errors"
                         :key="error.$uid">
                         {{ error.$message }}
                     </span>
