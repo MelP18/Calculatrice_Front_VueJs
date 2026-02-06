@@ -8,12 +8,18 @@
     font-family: 'Montserrat-Italic';
     src: url(../assets/fonts/Montserrat/Montserrat-Italic.ttf) format(truetype);
 }
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url(../assets/fonts/Montserrat/Montserrat-Light.ttf) format(truetype);
+}
 :root{
     --font-family-base:'Montserrat-Regular';
+    --font-family-light:'Montserrat-Light';
     --font-family-italic:'Montserrat-Italic';
-    --base-color: rgb(3, 37, 53);
-    --primary-color: rgb(2, 61, 89);
-    --secondary-color:rgb(77, 67, 93);
+    --base-color: rgb(43, 34, 59);
+    --primary-color: rgb(62, 51, 82);
+    --secondary-color:rgb(71, 59, 88);
+    --tertiary-color:rgb(123, 111, 143);
     --rgba-background:rgba(74, 55, 105, 0.2);
     --color-black:rgb(1, 10, 22);
     --color-gray:#5e5b5b;
@@ -84,38 +90,43 @@ main{
     display: flex;
     flex-direction: column;
     gap: 25px;
-    background: rgba(255, 255, 255, 0.25);
-    background-color: var(--rgba-background);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(6px);
+
+background: linear-gradient(
+    120deg,
+    #433a58 0%,
+    #514a6b70 40%,
+    #6a708950 75%,
+    #8b91a880 100%
+  );
+
 }
 
-.auth__form{
+/* .auth__form{
     width: 100%;
     height: calc(100% - 49px);
     display: flex;
     justify-content: center;
-}
+} */
 .auth__field {
-    width: 100%;
-    height: 100%;
-    padding: 10px 20px;
+    width: 80%;
+    /* padding:100px 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 25px;
-   /*  overflow-x: hidden;
-    overflow-y: scroll; */
+ 
 }
 
 .auth__field h3 {
     text-align: center;
-    font-size: 18px;
+    font-size: 2rem;
     font-weight: bold;
     color: var(--color-white);
     font-family: var(--font-family-italic);
+    text-transform: uppercase;
 }
 
 .error__part {
@@ -131,28 +142,36 @@ main{
     gap: 5px;
     width: 100%;
 }
-.auth__field__list__item__two {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
+
 form{
-    width: 90%;
-    box-shadow: 0 0 5px;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 28px;
-    padding: 15px;
-    border-radius: 5px;
+    gap: 50px;
+    padding: 30px 50px;
+    border-radius: 25px;
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15),
+            -3px -3px 5px rgba(0, 0, 0, 0.15);
 }
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}
+/* @media (max-width: 600px) {
+    form {
+        width: 100%;
+        padding: 30px 25px;
+    }
+} */
+
 
 .auth__field__list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    height: 150px;
-    overflow-y: scroll;
+    gap: 50px;
 }
 
 .auth__field__list::-webkit-scrollbar {
@@ -172,7 +191,7 @@ form{
 }
 .auth__field__list__item__two {
     display: flex;
-    gap: 15px;
+    gap: 50px;
     align-items: center;
 }
 .auth__field__list__item label {
@@ -192,31 +211,36 @@ form{
     color: var(--color-white);
     background-color: var(--color-white);
     background-color: transparent;
-    border-bottom: 1px solid var(--base-color);
+    border-bottom: 1px solid var(--tertiary-color);
 }
 
 
 .auth__field__list__item__input input::placeholder {
-    color: var(--color-gray-primary);
+    color: rgba(144, 128, 172, 0.5);
     font-style: italic;
     font-weight: bold;
 }
 
+@media (max-width: 576px) {
+    .auth__field__list__item__input input::placeholder  {
+        display: none;
+    }
+}
 input[type=file]::file-selector-button {
-    background-color: var(--base-color);
+    background-color: var(--tertiary-color);
     color: white;
     border: 0px;
-    height: 28px;
+    height: 27px;
     padding: 6px;
     transition: .5s;
     margin-left: -10px;
 }
 
 .auth__field__list__item__input span {
-    font-size: 15px;
-    padding: 5px;
+    font-size: 18px;
+    padding:3px 8px;
     color: var(--color-white);
-    background-color: var(--base-color);
+    background-color: var(--tertiary-color);
     border-top-left-radius: var(--border-radius-primary);
     border-bottom-left-radius: var(--border-radius-primary);
 }
@@ -225,24 +249,24 @@ input[type=file]::file-selector-button {
 .btn__submit {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .btn__submit button {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    padding: 5px 25px;
+    padding: 12px 35px;
     color: var(--color-white);
-    background-color: var(--base-color);
-    border-radius: var(--border-radius-primary);
+    background-color: var(--tertiary-color);
+    font-family: var(--font-family-base);
+    letter-spacing: 1px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
 }
 
 @media(max-width: 992px){ 
-    .auth__field__list {
-        height: 238px;
-        overflow-y: scroll;
-    }
     .auth__field__list__item__two{
         flex-direction: column;
     }

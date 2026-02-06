@@ -4,13 +4,13 @@
     
     <form @submit.prevent="connection">
         <h3>Connexion</h3>
-        <div class="auth__field__list" style="height: 111px;">
+        <div class="auth__field__list">
             <div class="auth__field__list__item">
                 <div class="auth__field__list__item__input">
                     <span class="mdi mdi-email-outline"></span>
-                    <input type="email" v-model="userConnectData.email" placeholder="email : no_reply@gmail.com">
+                    <input type="email" v-model="userConnectData.email" placeholder="email">
                 </div>
-                <span style="color: rgb(156, 18, 18); font-weight: bold;" v-for="error in isLoginDataValid.email.$errors" :key="error.$uid">
+                <span style="color: rgb(243, 87, 84); font-size: 12px; font-family: 'Montserrat Regular';" v-for="error in isLoginDataValid.email.$errors" :key="error.$uid">
                         {{ error.$message }}
                 </span>
             </div>
@@ -19,7 +19,7 @@
                     <span class="mdi mdi-lock"></span>
                     <input type="password" v-model="userConnectData.password" placeholder="mot de passe">
                 </div>
-                <span style="color: rgb(156, 18, 18); font-weight: bold;" v-for="error in isLoginDataValid.password.$errors" :key="error.$uid">
+                <span style="color: rgb(243, 87, 84); font-size: 12px; font-family: 'Montserrat Regular';" v-for="error in isLoginDataValid.password.$errors" :key="error.$uid">
                         {{ error.$message }}
                 </span>
             </div>
