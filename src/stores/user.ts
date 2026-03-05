@@ -3,15 +3,10 @@ import { ref } from 'vue'
 import http from "@/libs/http";
 import { toast } from 'vue3-toastify';
 import router from "@/router";
-import type {User} from '@/Types/user'
+//import type {User} from '@/Types/user'
 export const useUserStore = defineStore("users", () => {
 
-const userData = ref({
-    _id: '',
-    username: '',
-    email: '',
-    avatar: ''
-})
+const userData = ref<any>({})
 
     const token = localStorage.getItem('tokenUser')
     const user = async () => {
