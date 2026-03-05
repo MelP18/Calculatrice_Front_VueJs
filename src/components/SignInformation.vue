@@ -18,7 +18,7 @@
       
       <RouterLink to="" class="link">
         <span class="mdi mdi-email"></span>
-        <p>melpcalcul@gmail.com</p>
+        <p>gsnmelp@gmail.com</p>
       </RouterLink>
       
       

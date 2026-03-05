@@ -13,11 +13,11 @@
                             <!-- <a href="/" class="active">Home</a> -->
                         </li>
                         <li class="header__menu__list__item">
-                            <RouterLink to="/signup" class="menu">S'inscrire</RouterLink>
+                            <RouterLink to="/auth/signup" class="menu">S'inscrire</RouterLink>
                             <!-- <a href="/signup"> Sign up</a> -->
                         </li>
                         <li class="header__menu__list__item">
-                            <RouterLink to="/signin" class="menu">Se connecter</RouterLink>
+                            <RouterLink to="/auth/signin" class="menu">Se connecter</RouterLink>
                             <!-- <a href="/login">Login</a> -->
                         </li>
                     </ul>
@@ -31,8 +31,6 @@
 
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
-import IconPlatform from '@/components/IconPlatform.vue';
-import base from '@/assets/base.css'
 </script>
 
 
