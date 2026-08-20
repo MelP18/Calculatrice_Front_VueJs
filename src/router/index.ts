@@ -7,9 +7,9 @@ import ActivateAccountComponent from '@/views/ActivateAccount.vue'
 import UserLayout from '@/layout/UserLayout.vue'
 import AuthLayout from '@/layout/AuthLayout.vue'
 import Profile from '@/views/user/Profile.vue'
-import Logout from '@/views/user/Logout.vue'
 import Historique from '@/views/user/Historique.vue'
 import ErrorPage from '@/views/ErrorPage.vue'
+import ServerErrorPage from '@/views/ServerErrorPage.vue'
 
 
 
@@ -23,7 +23,7 @@ const router = createRouter({
             component: Home
         },
         {
-            path: '/',
+            path: '/auth',
             name: 'auth',
             component:AuthLayout,
             children: [
@@ -45,6 +45,11 @@ const router = createRouter({
             ]
         },
         {
+            path: '/error',
+            name: 'ServerError',
+            component: ServerErrorPage
+        },
+        {
             path: '/:catchAll(.*)*',
             name: 'PageNotFound',
             component: ErrorPage
@@ -58,19 +63,11 @@ const router = createRouter({
                     path: '',
                     name: 'Home',
                     component: UserInterface,
-                    /*  beforeEnter:[function blocked (to,from){
-                         return ('/signup')
-                       }], */
-                }/* ,
+                },
                 {
                     path: 'profile',
                     name: 'Profile',
                     component: Profile
-                } */,
-                {
-                    path: 'logout',
-                    name: 'Logout',
-                    component: Logout
                 },
                 {
                     path: 'historique',

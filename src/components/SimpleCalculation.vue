@@ -51,25 +51,28 @@ function view(element:Number){
     display: flex;
     align-items: center;
     width: 100%;
-    border-radius: var(--border-radius-primary);
-    background-color: var(--color-gray);
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.06);
 }
 
 .center__top__left button {
     width: 100%;
     height: 100%;
+    padding: 6px 0;
     border: none;
-    background-color: var(--color-gray);
-    color: var(--color-gray);
-    border-radius: var(--border-radius-primary);
+    background-color: transparent;
+    font-family: var(--font-SMono-regular);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.45);
 }
 
 .center__top__left button.active {
     width: 100%;
     height: 100%;
-    background-color: var(--color-white);
-    border-top-left-radius: var(--border-radius-primary);
-    border-bottom-left-radius: var(--border-radius-primary);
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--white);
 }
 
 .center__top__right {
@@ -83,16 +86,18 @@ function view(element:Number){
     text-align: center;
     padding: 3px;
     width: 100%;
-    font-size: 18px;
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.5);
 }
 .center__top__right span:hover {
-    background-color: var(--color-gray-primary);
-    border-radius: var(--border-radius-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--white);
 }
 .center__top__right span.active {
     text-align: center;
     width: 100%;
-    color: var(--color-gray);
+    color: var(--accent-green);
     font-weight: bold;
 }
 </style>

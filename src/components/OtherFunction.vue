@@ -40,46 +40,41 @@
 }
 
 .calulation__other button {
-    padding: 5px;
     cursor: pointer;
     width: 100%;
-    padding: 6px;
-    font-weight: bold;
-    background-color: var(--background-button);
-    border: 2px solid var(--background-button);
-    border-radius: var(--border-radius-primary);
+    padding: 8px 2px;
+    font-family: var(--font-SMono-regular);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    border-radius: 7px;
+    transition: background .12s ease;
 }
 
 .calulation__other button:hover {
-    background-color: var(--color-gray-primary);
-    border: 1px solid var(--background-button-hover);
+    background-color: rgba(255, 255, 255, 0.12);
 }
 
 .bottom__right_bottom .remove__rear {
     grid-column: span 2;
-    width: 80%;
-    left: 20%;
     cursor: pointer;
-    /* background-color: var(--background-button-number); */
 }
 
 .bottom__right_bottom .remove__rear button {
-    padding: 5px;
     cursor: pointer;
     width: 100%;
-    font-weight: bold;
-    padding: 6px;
-    color: white;
-    background-color: var(--base-color);
-    border: 2px solid var(--background-button-number);
-    border-radius: var(--border-radius-primary);
+    padding: 8px 2px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 7px;
 }
 
 .bottom__right_bottom .remove__rear button:hover {
-    background-color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius-primary);
-    
+    background-color: rgba(255, 255, 255, 0.18);
 }
 
 .bottom__right_bottom .calulation__enter {
@@ -89,20 +84,17 @@
 }
 
 .bottom__right_bottom .calulation__enter button {
-    padding: 5px;
     cursor: pointer;
     width: 100%;
-    padding: 6px;
-    color: var(--color-white);
-    font-weight: bold;
-    border-radius: var(--border-radius-primary);
-    background-color: var(--base-color);
-    border: 2px solid var(--base-color);
+    padding: 8px 2px;
+    color: var(--hero-bg);
+    font-weight: 700;
+    border-radius: 7px;
+    background-color: var(--accent-green);
+    border: none;
 }
 
 .bottom__right_bottom .calulation__enter button:hover {
-    border: 2px solid var(--primary-color);
-    background-color: var(--primary-color);
-    border-radius: var(--border-radius-primary);
+    background-color: #93e0b6;
 }
 </style>

@@ -47,21 +47,28 @@ function clear(){
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color .15s ease;
 }
 
 .bottom__right__top p:hover {
-    background-color: var(--color-gray-primary);
-    border-radius: var(--border-radius-primary);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: var(--white);
 }
 
 .bottom__right__top .mode__dark {
     padding: 5px;
     width: 100%;
     text-align: center;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .bottom__right__top .mode__dark:hover {
-    background-color: var(--color-gray-primary);
-    border-radius: var(--border-radius-primary);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: var(--white);
 }
 </style>

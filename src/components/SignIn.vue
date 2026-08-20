@@ -1,44 +1,61 @@
-
 /*=============================++++ HTML ++++=================================*/
 <template>
-    
-    <form @submit.prevent="connection">
-        <h3>Connexion</h3>
+
+    <form class="auth-card" @submit.prevent="connection" id="card-signin">
+        <RouterLink to="/" class="auth-mark"><span class="mdi mdi-calculator-variant"></span></RouterLink>
+        <h3>Se connecter</h3>
+        <p class="subtitle">Accède à ta calculatrice CalMelp</p>
         <div class="auth__field__list">
-            <div class="auth__field__list__item">
-                <div class="auth__field__list__item__input">
+            <div class="field">
+                <label>E-mail</label>
+                <div class="field-input">
                     <span class="mdi mdi-email-outline"></span>
-                    <input type="email" v-model="userConnectData.email" placeholder="email">
+                    <input type="email" id="signin-email" v-model="userConnectData.email" placeholder="toi@exemple.com">
                 </div>
-                <span style="color: rgb(243, 87, 84); font-size: 12px; font-family: 'Montserrat Regular';" v-for="error in isLoginDataValid.email.$errors" :key="error.$uid">
-                        {{ error.$message }}
+                <span class="error" 
+                    v-for="error in isLoginDataValid.email.$errors" :key="error.$uid">
+                    {{ error.$message }}
                 </span>
             </div>
-            <div class="auth__field__list__item">
-                <div class="auth__field__list__item__input">
-                    <span class="mdi mdi-lock"></span>
-                    <input type="password" v-model="userConnectData.password" placeholder="mot de passe">
+
+            <div class="field">
+                <label>Mot de passe</label>
+                <div class="field-input">
+                    <span class="mdi mdi-lock-outline"></span>
+                    <input :type="showPassword ? 'text' : 'password'" id="signin-password" v-model="userConnectData.password"
+                        placeholder="••••••••">
+                    <span @click="showPassword = !showPassword" :class="showPassword ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"  class="mdi toggle-eye" data-target="signin-password"></span>
                 </div>
-                <span style="color: rgb(243, 87, 84); font-size: 12px; font-family: 'Montserrat Regular';" v-for="error in isLoginDataValid.password.$errors" :key="error.$uid">
-                        {{ error.$message }}
+                <span class="error" 
+                    v-for="error in isLoginDataValid.password.$errors" :key="error.$uid">
+                    {{ error.$message }}
                 </span>
             </div>
-            <div class="btn__submit">
-                <button type="submit">Connexion</button>
+
+            <div class="field-row-end">
+                <span class="link-muted" id="go-forgot">Mot de passe oublié ?</span>
             </div>
+
+            <button class="auth-submit" id="auth-submit">Se connecter</button>
+
+            <p class="auth-switch">
+                Pas encore de compte ? <RouterLink to="/signup" >S'inscrire</RouterLink>
+            </p>
+
         </div>
     </form>
-                    
+
 </template>
 
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
-import{toast} from 'vue3-toastify'
+import { toast } from 'vue3-toastify'
 import { computed, ref, onMounted } from 'vue'
-import { required, email} from "@vuelidate/validators";
+import { required, email } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 import http from "@/libs/http";
 import router from "@/router";
+const showPassword = ref(false)
 
 const userConnectData = ref({
     email: '',
@@ -60,18 +77,18 @@ const userConnectRequired = computed(() => {
 const isLoginDataValid = useVuelidate(userConnectRequired, userConnectData)
 
 const connection = async () => {
-    const dataValid  = await isLoginDataValid.value.$validate()
-        if(dataValid){
-            http.post('/auth/signin', userConnectData.value)
-            .then((response)=>{
+    const dataValid = await isLoginDataValid.value.$validate()
+    if (dataValid) {
+        http.post('/auth/signin', userConnectData.value)
+            .then((response) => {
                 const accessToken = response.data
                 http.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
                 localStorage.setItem('tokenUser', accessToken)
                 toast.success('Connexion Etablie !')
                 let timeoutId = 3000
-                setTimeout(() => { 
-                    router.replace('/user') 
-                }, timeoutId )
+                setTimeout(() => {
+                    router.replace('/user')
+                }, timeoutId)
             })
             .catch(error => {
                 if (error.response && error.response.status === 400) {
@@ -83,8 +100,8 @@ const connection = async () => {
                     toast.error(error.message)
                 }
             })
-        }else {
-            toast.error('Oops... Données Indisponibles !')
-        }  
+    } else {
+        toast.error('Oops... Données Indisponibles !')
     }
+}
 </script>

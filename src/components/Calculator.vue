@@ -164,7 +164,7 @@ async function time() {
     DayTime.value = time
 }
 const TimeR = time()
-setInterval(time, 1)
+setInterval(time, 1000)
 
 </script>
 
@@ -175,19 +175,19 @@ setInterval(time, 1)
     height: calc(100vh - 135px);
 }
 .calculator {
+    width: 100%;
     padding: 5px 0 15px;
-    border-radius: var(--border-radius-base);
-    background-color: var(--background-button-number);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5),
-    inset 2px 2px 3px rgba(255, 255, 255, 0.25),
-    inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    background: linear-gradient(165deg, var(--calc-gradient-start), var(--calc-gradient-end));
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .calculator__content {
-    padding: 15px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 12px;
 }
 
 .calculator__top {
@@ -201,13 +201,27 @@ setInterval(time, 1)
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
+    padding: 4px 4px 8px;
 }
 
 .calculator__name {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
+}
+
+.calculator__name h2 {
+    font-family: var(--font-Fraunces-semibold);
+    font-size: 1.15rem;
+    color: var(--white);
+}
+
+.calculator__name p {
+    font-family: var(--font-SMono-regular);
+    font-size: 0.6875rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .day__info {
@@ -218,31 +232,34 @@ setInterval(time, 1)
 .day__info__list{
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 5px;
 }
 .day__info__list__item{
     display: flex;
     align-items: center;
     gap: 5px;
-   
+
 }
 .day__info__list__item p{
-    color: var(--secondary-color);
-    font-weight:bold ;
+    font-family: var(--font-SMono-regular);
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.5);
 }
 .day__info__list__item span{
-    color: var(--base-color);
-    font-size: 18px;
+    color: var(--accent-green);
+    font-size: 0.875rem;
 }
 
 .calculation__result {
     display: flex;
-    height: 70px;
+    height: 72px;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    background-color: var(--color-gray-primary);
-    border-radius: var(--border-radius-base);
+    justify-content: center;
+    gap: 6px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.28);
+    border-radius: 10px;
 }
 
 sup {
@@ -250,24 +267,28 @@ sup {
 }
 
 .calculation__result p {
+    font-family: var(--font-SMono-regular);
     text-align: right;
-    color: var(--color-white);
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.8125rem;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .calculation__result p:last-child {
-    font-size: 25px;
+    font-size: 1.5625rem;
     font-weight: bold;
-    color: var(--color-white);
+    color: var(--white);
 }
 
 .calculator__bottom {
     display: flex;
     justify-content: space-between;
-    gap: 25px;
-    padding: 25px;
+    gap: 20px;
+    padding: 18px;
     width: 100%;
-    background-color: var(--color-gray-tertiary);
-    border-radius: var(--border-radius-base);
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 12px;
 }
 @media(max-width:767px){
     .calculator__bottom {

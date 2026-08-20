@@ -1,31 +1,35 @@
 /*=============================++++ HTML ++++=================================*/
 <template>
    
-    <form @submit.prevent="activateAccount">
+    <form class="auth-card" @submit.prevent="activateAccount">
+        <RouterLink to="/" class="auth-mark"><span class="mdi mdi-calculator-variant"></span></RouterLink>
         <h3>Activation de Compte</h3>
-        <div class="auth__field__list" style="height: 111px;">
-            <div class="auth__field__list__item">
-                <div class="auth__field__list__item__input">
+        <p class="subtitle">Active ton compte CalMelp</p>
+
+        <div class="auth__field__list">
+            <div class="field">
+                <label>E-mail</label>
+                <div class="field-input">
                     <span class="mdi mdi-email-outline"></span>
-                    <input type="email" v-model="activateAccountData.email" placeholder="email : no_reply@gmail.com">
+                    <input type="email" id="signin-email" v-model="activateAccountData.email" placeholder="email : no_reply@gmail.com">
                 </div>
+                <span class="error" 
+                    v-for="error in isCodeValid.email.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                </span>
             </div>
-            <span style="color: rgb(156, 18, 18); font-weight: bold;" v-for="error in isCodeValid.email.$errors" :key="error.$uid">
-                        {{ error.$message }}
-            </span>
-            <div class="auth__field__list__item">
-                <div class="auth__field__list__item__input">
+            <div class="field">
+                <label>Code</label>
+                <div class="field-input">
                     <span class="mdi mdi-mail"></span>
                     <input type="text" v-model="activateAccountData.code" placeholder="code : aq6zd2g1r9">
                 </div>
+                <span class="error" 
+                    v-for="error in isCodeValid.code.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                </span>
             </div>
-            <span style="color: rgb(156, 18, 18); font-weight: bold;" v-for="error in isCodeValid.code.$errors" :key="error.$uid">
-                        {{ error.$message }}
-            </span>
-            
-            <div class="btn__submit">
-                <button type="submit">Envoyez</button>
-            </div>
+            <button class="auth-submit" id="signup-submit">Envoyer</button>
         </div>
 
     </form>                

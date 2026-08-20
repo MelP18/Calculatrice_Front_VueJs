@@ -45,16 +45,19 @@ function viewfunction(item:FunctionValue){
     width: 100%;
     text-align: center;
     padding: 5px;
-    color: var(--color-gray);
-    font-weight: bold;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    border-bottom: 2px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
 }
 .bottom__left__top p:hover {
-    border-bottom: 2px solid var(--base-color);
-    color: var(--color-black);
+    border-bottom: 2px solid var(--accent-green);
+    color: var(--white);
 }
 
 .bottom__left__top p.active {
-    border-bottom: 2px solid var(--base-color);
-    color: var(--color-black);
+    border-bottom: 2px solid var(--accent-green);
+    color: var(--white);
 }
 </style> 

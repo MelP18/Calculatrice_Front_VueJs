@@ -2,7 +2,7 @@
 <template>
     <div class="bottom__left__bottom">
         <div class="calcultion__fonction" v-for="element in functionValue">
-            <button @click="showfunct(element)" :style="{'background-color':element.color}">{{ element.functionval }}</button>
+            <button @click="showfunct(element)">{{ element.functionval }}</button>
         </div>
     </div>
 </template>
@@ -80,13 +80,18 @@ function showfunct(item:FunctionValue){
 .calcultion__fonction button {
     cursor: pointer;
     width: 100%;
-    padding: 6px;
-    border: 2px solid var(--background-button);
-    border-radius: var(--border-radius-primary);
+    padding: 8px 2px;
+    font-family: var(--font-SMono-regular);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    border-radius: 7px;
+    transition: background .12s ease;
 }
 .calcultion__fonction button:hover {
-    background-color: var(--background-button-hover);
-    border: 2px solid var(--background-button-hover);
+    background-color: rgba(255, 255, 255, 0.12);
 }
 
 sup {
