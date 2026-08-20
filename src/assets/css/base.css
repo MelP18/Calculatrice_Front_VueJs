@@ -1,0 +1,330 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Montserrat-Italic';
+    src: url(../fonts/Montserrat/Montserrat-Italic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-Thin';
+    src: url(../fonts/Montserrat/Montserrat-Thin.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url(../fonts/Montserrat/Montserrat-Light.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url(../fonts/Montserrat/Montserrat-Regular.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url(../fonts/Montserrat/Montserrat-Medium.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url(../fonts/Montserrat/Montserrat-SemiBold.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url(../fonts/Montserrat/Montserrat-Bold.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-ExtraBold';
+    src: url(../fonts/Montserrat/Montserrat-ExtraBold.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat-Black';
+    src: url(../fonts/Montserrat/Montserrat-Black.ttf) format(truetype);
+}
+
+
+/* SpaceMono */
+
+@font-face {
+    font-family: 'SpaceMono-Bold';
+    src: url(../fonts/Space_Mono/SpaceMono-Bold.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'SpaceMono-BoldItalic';
+    src: url(../fonts/Space_Mono/SpaceMono-BoldItalic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'SpaceMono-Italic';
+    src: url(../fonts/Space_Mono/SpaceMono-Italic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'SpaceMono-Regular';
+    src: url(../fonts/Space_Mono/SpaceMono-Regular.ttf) format(truetype);
+}
+
+
+
+/* Fraunces */
+
+@font-face {
+    font-family: 'Fraunces-Black';
+    src: url(../fonts/Fraunces/Fraunces_72pt-Black.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-BlackItalic';
+    src: url(../fonts/Fraunces/Fraunces_72pt-BlackItalic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-Bold';
+    src: url(../fonts/Fraunces/Fraunces_72pt-Bold.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-BoldItalic';
+    src: url(../fonts/Fraunces/Fraunces_72pt-BoldItalic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-Italic';
+    src: url(../fonts/Fraunces/Fraunces_72pt-Italic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-Light';
+    src: url(../fonts/Fraunces/Fraunces_72pt-Light.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-LightItalic';
+    src: url(../fonts/Fraunces/Fraunces_72pt-LightItalic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-Regular';
+    src: url(../fonts/Fraunces/Fraunces_72pt-Regular.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-SemiBold';
+    src: url(../fonts/Fraunces/Fraunces_72pt-SemiBold.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-SemiBoldItalic';
+    src: url(../fonts/Fraunces/Fraunces_72pt-SemiBoldItalic.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-Thin';
+    src: url(../fonts/Fraunces/Fraunces_72pt-Thin.ttf) format(truetype);
+}
+
+@font-face {
+    font-family: 'Fraunces-ThinItalic';
+    src: url(../fonts/Fraunces/Fraunces_72pt-ThinItalic.ttf) format(truetype);
+}
+:root{
+    --font-base:'Montserrat-Regular';
+    --font-bold:'Montserrat-Bold';
+    --font-extrabold:'Montserrat-ExtraBold';
+    --font-medium:'Montserrat-Medium';
+    --font-semibold:'Montserrat-SemiBold';
+    --font-black:'Montserrat-Black';
+
+    --font-SMono-bold:'SpaceMono-Bold';
+    --font-SMono-bolditalic:'SpaceMono-BoldItalic';
+    --font-SMono-italic:'SpaceMono-Italic';
+    --font-SMono-regular:'SpaceMono-Regular';
+
+    --font-Fraunces-black:'Fraunces-Black';
+    --font-Fraunces-blackitalic:'Fraunces-BlackItalic';
+    --font-Fraunces-bold:'Fraunces-Bold';
+    --font-Fraunces-bolditalic:'Fraunces-BoldItalic';
+    --font-Fraunces-italic:'Fraunces-Italic';
+    --font-Fraunces-light:'Fraunces-Light';
+    --font-Fraunces-lightitalic:'Fraunces-LightItalic';
+    --font-Fraunces-regular:'Fraunces-Regular';
+    --font-Fraunces-semibold:'Fraunces-SemiBold';
+    --font-Fraunces-semibolditalic:'Fraunces-SemiBoldItalic';
+    --font-Fraunces-thin:'Fraunces-Thin';
+    --font-Fraunces-thinitalic:'Fraunces-ThinItalic';
+
+
+   
+    --base-color: rgb(112, 93, 145);
+    --primary-color: rgb(62, 51, 82);
+    --secondary-color: rgb(71, 59, 88);
+    --tertiary-color: rgb(123, 111, 143);
+    --rgba-background: rgba(74, 55, 105, 0.2);
+
+    --color-black: rgb(1, 10, 22);
+    --color-gray: #5e5b5b;
+    --color-danger: #f35754;
+    --color-gray-primary: #747171;
+    --background-button-hover: #b9b6b6;
+    --color-gray-tertiary: #918f8f;
+    --background-button: #eaeaeaee;
+    --background-main: rgb(240, 238, 238);
+    --background-button-number: #aaaaaa;
+    --white: #fff;
+    --color-white: #fff;
+
+    --box-shadow: 0px 1px 10px 0px #00000038;
+    --border-radius-base: 9px;
+    --border-radius-primary: 5px;
+
+    --text-color: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --table-row-text: var(--base-color);
+
+    --hero-bg: rgb(62, 53, 78);
+    --calc-gradient-start: #3a3050;
+    --calc-gradient-end: #2b2240;
+
+    --accent-green: #7fd9a8;
+    --accent-coral: #f3908d;
+    --header-bg: rgba(24, 20, 32, 0.72);
+    --header-bg-scrolled: #181420;
+    --border-subtle: rgba(112, 93, 145, 0.15);
+    --canvas-dark: #17151d;
+}
+
+ /* ============ MODE SOMBRE — mêmes teintes, canvas inversé ============ */
+  html[data-theme="dark"]{
+    --hero-bg: rgb(43, 34, 59);
+    --header-bg-scrolled: rgb(58, 49, 74);
+    --base-color: rgb(43, 34, 59);
+    --primary-color: rgb(168, 150, 200);
+    --secondary-color: rgb(58, 49, 74);
+    --tertiary-color: rgb(150, 138, 176);
+    --rgba-background: rgba(74, 55, 105, 0.35);
+
+    --color-gray: #4a4750;
+    --color-gray-primary: #3a3844;
+    --background-button-hover: #45414f;
+    --color-gray-tertiary: #2a2833;
+    --background-button: #2d2b36;
+    --background-main: #17151d;
+    --background-button-number: #383544;
+    --color-white: #f2f0f6;
+
+    --box-shadow: 0px 1px 14px 0px #00000060;
+
+    --text-color: #ece9f2;
+    --text-muted: #a8a3b5;
+    --table-row-text: #e6e1f0;
+
+    --calc-gradient-start: #241d33;
+    --calc-gradient-end: #17121f;
+  }
+
+*{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    z-index: 5;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: black;
+    font-family:var(--font-base) ;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: var(--font-base);
+    background: var(--background-main);
+    color: var(--text-color);
+    min-height:100vh;
+    transition: background .25s ease, color .25s ease;
+  }
+
+
+
+a, a.active a:hover{
+    text-decoration: none;
+    color:inherit;
+}
+
+ul li{
+    list-style-type: none;
+}
+
+button{ 
+    font-family:var(--font-base); 
+    cursor:pointer; 
+}
+
+main{
+    height: calc(100vh - 70px);
+    z-index: -1;
+    background-color:var(--background-main); 
+    overflow-y: scroll;
+}
+
+.container{
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.landing-container{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.hidden{ display:none !important; }
+
+
+.user__main__title{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.user__main__title h1{
+    font-family: var(--font-Fraunces-semibold);
+    font-size: 1.5rem;
+    letter-spacing: -.3px;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+.user__main__title hr{
+   border: none;
+   height: 3px;
+   width: 48px;
+   border-radius: 2px;
+   background-color: var(--accent-green);
+}
+
+
+
+.error__part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+input[type=file]::file-selector-button {
+    background-color: var(--tertiary-color);
+    color: white;
+    border: 0px;
+    height: 27px;
+    padding: 6px;
+    transition: .5s;
+    margin-left: -10px;
+}
+

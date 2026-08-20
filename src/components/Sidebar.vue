@@ -8,12 +8,7 @@
                         <h4>Calculatrice</h4>
                     </RouterLink>
                 </li>
-                <!-- <li class="sidebar__menu__list__item">
-                    <RouterLink to="/user/profile" class="sidebar__menu__logo">
-                        <span class="mdi mdi-account"></span>
-                        <h4>Profile</h4>
-                    </RouterLink>
-                </li> -->
+                
                 <li class="sidebar__menu__list__item">
                     <RouterLink to="/user/historique" class="sidebar__menu__logo">
                         <span class="mdi mdi-view-list"> </span>
@@ -21,9 +16,9 @@
                     </RouterLink>
                 </li>
                 <li class="sidebar__menu__list__item">
-                    <RouterLink to="/user/logout" class="sidebar__menu__logo">
-                        <span class="mdi mdi-logout"></span>
-                        <h4>Deconnexion</h4>
+                    <RouterLink to="/user/profile" class="sidebar__menu__logo">
+                        <span class="mdi mdi-account"></span>
+                        <h4>Profil</h4>
                     </RouterLink>
                 </li>
             </ul>
@@ -40,6 +35,9 @@
     justify-content: center;
     align-items: center;
     transition: 0.3s;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .sidebar {

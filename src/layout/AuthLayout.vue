@@ -1,141 +1,43 @@
 /*=============================++++ HTML ++++=================================*/
 <template>
-  <div class="block">
-    <div class="main__background">
-      <div class="main__background__left">
-        <!-- left rrgba vilet -->
-      </div>
-      <div class="main__background__right">
-        <!-- right violet -->
-      </div>
+  <div class="auth">
+    <RouterLink to="/" class="auth-back-top">
+        <span class="mdi mdi-arrow-left"></span> Retour à l'accueil
+    </RouterLink>
+
+    <div class="switch">
+       <ThemeToggle />
     </div>
-    <div class="main__foreground">
-      <div class="main__foreground__img">
-        <img :src="image2" alt="" />
-        <div class="auth">
-          <Header />
-          <div class="auth__form">
-            <div class="auth__field">
-              <RouterView />
-            </div>
-            <div class="main__foreground__content__left">
-              <SignInformation />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <RouterView />
   </div>
 </template>
 
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
-import image2 from "@/assets/images/remboursement-notes-de-frais.jpg";
-import { onMounted, ref } from "vue";
-import { RouterView } from "vue-router";
-
-import Header from "@/components/Header.vue";
-import SignInformation from "../components/SignInformation.vue";
+import ThemeToggle from "@/components/ThemeToggle.vue";
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
-/*=============================++++ CSS ++++=================================*/
-<style scoped>
-.block {
-  display: flex;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  align-items: center;
-  overflow: hidden;
+<style>
+.switch{
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
-.main__background {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  display: flex;
+.auth-back-top{
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.7);
+    font-family: var(--font-semibold);
+    font-size: 0.78125rem;
+    transition: color .2s ease;
 }
-
-.main__background .main__background__left {
-  padding: 15px;
-  background-color: var(--rgba-background);
-  width:100%;
-  height: 100%;
-}
-
-.main__background .main__background__right {
-  padding: 15px;
-  background-color: var(--secondary-color);
-  width: 35%;
-  height: 100%;
-}
-
-.main__foreground {
-  background-color: var(--color-black);
-  width: 90%;
-  height: 85vh;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-}
-
-.main__foreground__img {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-.main__foreground__content__left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  padding:0px 15px;
-  /* padding-bottom: 50px; */
-}
-
-.main__foreground__img img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.4;
-}
-.auth__form {
-  width: 100%;
-  height: calc(100% - 49px);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 50px;
-  
-}
-@media (max-width: 1300px) {
-    .auth__form {
-        flex-direction: column;
-        align-items: center;
-        gap: 50px;
-        overflow-y: auto;
-          justify-content: flex-start;
-
-    }
-}
-
-
-.auth {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (max-width: 1300px) {
-  .main__foreground__content__left {
-    padding-bottom: 50px;
-  }
-  
-  .auth__field{
-    width: 100%;
-    padding-top: 50px;
-  }
-}
-
+.auth-back-top .mdi{ font-size: 0.9375rem; color: inherit; }
+.auth-back-top:hover{ color: var(--white); }
 </style>
