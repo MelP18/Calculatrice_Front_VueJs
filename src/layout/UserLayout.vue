@@ -7,18 +7,22 @@
                     <div class="container__header">
                       <div class="header__content">
                             <div class="header__logo">
-                                <div class="icon">
-                                    <IconPlatform />
-                                </div>
+                                <Logo />
                             </div>
-                            <div class="user__connect">
-                                <div class="user__connect__img">
-                                    <span class="mdi mdi-account-circle"></span>
+                            <div class="header__right">
+                                <ThemeToggle />
+                                <div class="user__connect">
+                                    <div class="user__connect__img">
+                                        <span class="mdi mdi-account-circle"></span>
+                                    </div>
+                                    <span class="line"></span>
+                                    <div class="user__connect__username">
+                                        <h4 id="username" v-if="userData">{{ userData.username }}</h4>
+                                    </div>
                                 </div>
-                                <span class="line"></span>
-                                <div class="user__connect__username">
-                                    <h4 id="username" v-if="userData">{{ userData.username }}</h4>
-                                </div>
+                                <button type="button" class="header__logout" aria-label="Se déconnecter" @click="showLogoutModal = true">
+                                    <span class="mdi mdi-logout"></span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -31,14 +35,18 @@
                 </div>
             </div>
         </div>
+
+        <LogoutModal v-if="showLogoutModal" @cancel="showLogoutModal = false" @confirm="signOut" />
     </div>
 </template>
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
-import IconPlatform from '@/components/IconPlatform.vue'
+import Logo from '@/components/Logo.vue'
 import Sidebar from '@/components/Sidebar.vue';
-import { RouterView } from "vue-router";
-import {ref} from "vue";
+import ThemeToggle from '@/components/ThemeToggle.vue';
+import LogoutModal from '@/components/LogoutModal.vue';
+import { RouterView, useRouter } from "vue-router";
+import { ref } from "vue";
 
 import {useUserStore} from '@/stores/user'
 import { storeToRefs } from 'pinia'
@@ -47,6 +55,14 @@ const { userData } = storeToRefs(useUserStore())
 const { user } = useUserStore()
 user()
 
+const router = useRouter()
+const showLogoutModal = ref(false)
+
+function signOut() {
+    localStorage.removeItem('tokenUser')
+    showLogoutModal.value = false
+    router.replace('/signin')
+}
 </script>
 /*=============================++++ CSS ++++=================================*/
 
@@ -93,9 +109,8 @@ user()
     border-radius: var(--border-radius-base);
 }
 .header {
-    background-color: var(--secondary-color);
+    background-color: var(--header-bg-scrolled);
     z-index: 10;
-    box-shadow: 0 0 5px var(--secondary-color);
     position: fixed;
     width: 100%;
 }
@@ -109,25 +124,46 @@ user()
 .container__header{
     padding: 0 25px;
 }
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.header__logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border: none;
+    border-radius: 50%;
+    color: var(--hero-bg);
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+.header__logout:hover {
+    background: var(--accent-coral);
+    color: var(--hero-bg);
+}
+.header__logout .mdi {
+    font-size: 1.125rem;
+}
 .user__connect {
     display: flex;
     justify-content: right;
     align-items: center;
     gap: 10px;
     padding: 5px 15px;
-    border: 1px solid var(--base-color);
-    background-color:var(--base-color) ;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: rgba(255, 255, 255, 0.06);
     border-radius: 35px;
-    box-shadow: 25px 25px 35px rgba(0, 0, 0, 0.25),10px 10px 70px rgba(0, 0, 0, 0.25),
-    inset 5px 5px 10px rgba(0, 0, 0, 0.5),
-    inset 5px 5px 20px rgba(255, 255, 255, 0.2),
-    inset -2px -2px 10px rgba(0, 0, 0, 0.75);
 }
 
 .user__connect span.line {
-    background-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.2);
     height: 20px;
-    width: 3px
+    width: 2px
 }
 
 .user__connect__img {
@@ -140,8 +176,8 @@ user()
     width: 100%;
     height: 100%;
     object-fit: cover;
-    color: var(--secondary-color);
-    
+    color: var(--accent-green);
+
 }
 
 .user__connect__username h4 {

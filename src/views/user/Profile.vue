@@ -2,39 +2,25 @@
     <div class="block">
         <div class="profil">
             <div class="user__main__title">
-                <h1>PROFILE</h1>
+                <h1>PROFIL</h1>
                 <hr>
             </div>
-            <div class="main">
-                <div class="user__info" v-if="userData">
-                    <div class="user__email">
-                        <h4>Avatar</h4>
-                        <img :src="userData.avatar" alt="avatar">
-                    </div>
-                    <div class="user__username">
-                        <h4>Pseudonime</h4>
-                        <p>{{ userData.username }}</p>
-                    </div>
-                    <div class="user__email">
-                        <h4>E-mail</h4>
-                        <p>{{ userData.email }}</p>
-                    </div>
-
+            <div class="user__info" v-if="userData">
+                <div class="user__username">
+                    <h4>Pseudonyme</h4>
+                    <p>{{ userData.username }}</p>
+                </div>
+                <div class="user__email">
+                    <h4>E-mail</h4>
+                    <p>{{ userData.email }}</p>
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
 
 <script lang="ts" setup>
-
-/* import { storeToRefs } from "pinia";
-import { useConnectionStore } from '@/stores/connection';
-const { userData } = storeToRefs(useConnectionStore())
-const { user } = useConnectionStore()
-user() */
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 
@@ -44,17 +30,27 @@ user()
 </script>
 
 <style scoped>
-.main {
-    width: 100%;
-    height: calc(100vh - 135px);
+.user__info {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 34px;
+    background: var(--background-button);
+    border-radius: var(--border-radius-base);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
 }
 
-.main p {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--base-color);
+.user__info h4 {
+    font-family: var(--font-SMono-regular);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.user__info p {
+    font-weight: 700;
+    color: var(--text-color);
 }
 </style>

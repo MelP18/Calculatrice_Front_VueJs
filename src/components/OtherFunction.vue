@@ -79,7 +79,7 @@
     background-color: var(--primary-color);
     border: 2px solid var(--primary-color);
     border-radius: var(--border-radius-primary);
-    
+
 }
 
 .bottom__right_bottom .calulation__enter {

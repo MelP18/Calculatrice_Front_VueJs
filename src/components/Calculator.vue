@@ -164,7 +164,7 @@ async function time() {
     DayTime.value = time
 }
 const TimeR = time()
-setInterval(time, 1)
+setInterval(time, 1000)
 
 </script>
 
@@ -224,7 +224,7 @@ setInterval(time, 1)
     display: flex;
     align-items: center;
     gap: 5px;
-   
+
 }
 .day__info__list__item p{
     color: var(--secondary-color);

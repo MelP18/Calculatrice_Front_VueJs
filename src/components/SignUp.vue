@@ -1,66 +1,54 @@
-
 /*=============================++++ HTML ++++=================================*/
 <template>
-    <form @submit.prevent="registration" enctype="multipart/form-data">
-        <h3>Inscription</h3>
+    <form id="card-signup" class="auth-card" @submit.prevent="registration">
+        <RouterLink to="/" class="auth-mark"><img :src="logo" alt="Logo CALMELP" /></RouterLink>
+        <h3>S'inscrire</h3>
+        <p class="subtitle">Crée ton compte CalMelp</p>
+
         <div class="auth__field__list">
-            <div class="auth__field__list__item__two">
-                <div class="auth__field__list__item">
-                    <div class="auth__field__list__item__input">
-                        <span class="mdi mdi-account-circle-outline"></span>
-                        <input type="file" @change="file" ref="userRegistredData.avatar">
-                    </div>
-                    <span style="color: rgb(243, 87, 84); font-size: 12px; font-family: 'Montserrat Regular';" v-for="error in isSigninDataValid.avatar.$errors"
-                        :key="error.$uid">
-                        {{ error.$message }}
-                    </span>
+            <div class="field">
+                <label>Pseudonyme</label>
+                <div class="field-input">
+                    <span class="mdi mdi-account-outline"></span>
+                    <input type="text" id="signup-username" v-model="userRegistredData.username"
+                        placeholder="ex : melp42">
                 </div>
-                <div class="auth__field__list__item">
-                    <div class="auth__field__list__item__input">
-                        <span class="mdi mdi-account"></span>
-                        <input type="text" v-model="userRegistredData.username" placeholder="pseudonime">
-                    </div>
-                    <span  style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.username.$errors"
-                        :key="error.$uid">
-                        {{ error.$message }}
-                    </span>
-                </div>
-            </div>
-            <div class="auth__field__list__item">
-                <div class="auth__field__list__item__input">
-                    <span class="mdi mdi-email-outline"></span>
-                    <input type="email" v-model="userRegistredData.email" placeholder="email">
-                </div>
-                <span style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.email.$errors" :key="error.$uid">
+                <span class="error" v-for="error in isSigninDataValid.username.$errors" :key="error.$uid">
                     {{ error.$message }}
                 </span>
             </div>
-            <div class="auth__field__list__item__two">
-                <div class="auth__field__list__item">
-                    <div class="auth__field__list__item__input">
-                        <span class="mdi mdi-lock"></span>
-                        <input type="password" v-model="userRegistredData.password" placeholder="mot de passse">
-                    </div>
-                    <span style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.password.$errors"
-                        :key="error.$uid">
-                        {{ error.$message }}
-                    </span>
+            <div class="field">
+                <label>E-mail</label>
+                <div class="field-input">
+                    <span class="mdi mdi-email-outline"></span>
+                    <input type="email" id="signup-email" v-model="userRegistredData.email"
+                        placeholder="toi@exemple.com">
                 </div>
-                <div class="auth__field__list__item">
-                    <div class="auth__field__list__item__input">
-                        <span class="mdi mdi-lock"></span>
-                        <input type="password" v-model="userRegistredData.confirm_password"
-                            placeholder="confirmez">
-                    </div>
-                    <span style="color: rgb(243, 87, 84);font-size: 12px; font-family: 'Montserrat Regular'; letter-spacing: .5px;" v-for="error in isSigninDataValid.confirm_password.$errors"
-                        :key="error.$uid">
-                        {{ error.$message }}
-                    </span>
+                <span class="error" 
+                    v-for="error in isSigninDataValid.email.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                </span>
+            </div>
+            <div class="field">
+                <label>Mot de passe</label>
+                <div class="field-input">
+                    <span class="mdi mdi-lock-outline"></span>
+                    <input  :type="showPassword ? 'text' : 'password'" id="signup-password" v-model="userRegistredData.password"
+                        placeholder="••••••••">
+                    <span @click="showPassword = !showPassword" :class="showPassword ? 'mdi-eye-off-outline' : 'mdi-eye-outline'" class="mdi toggle-eye" data-target="signup-password"></span>
                 </div>
+                <span class="field-hint">8 caractères minimum</span>
+                <span class="error"
+                    v-for="error in isSigninDataValid.password.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                </span>
             </div>
-            <div class="btn__submit">
-                <button type="submit">S'inscrire</button>
-            </div>
+
+            <button class="auth-submit" id="signup-submit">S'inscrire</button>
+
+    <p class="auth-switch">
+      Déjà un compte ? <RouterLink to="/signin">Se connecter</RouterLink>
+    </p>
         </div>
 
     </form>
@@ -70,26 +58,24 @@
 <script lang="ts" setup>
 
 import { toast } from 'vue3-toastify'
-import { ref, computed} from 'vue'
+import { ref, computed } from 'vue'
 import { required, email, sameAs } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 import http from "@/libs/http";
 import router from "@/router";
+import logo from "@/assets/images/logo.svg";
+const showPassword = ref(false)
 
 const userRegistredData = ref({
-    avatar: '',
     username: '',
     email: '',
     password: '',
-    confirm_password: ''
 })
 
 
 const userRegistredRequired = computed(() => {
     return {
-        avatar: {
-            required
-        },
+
         username: {
             required
         },
@@ -100,50 +86,22 @@ const userRegistredRequired = computed(() => {
         password: {
             required
         },
-        confirm_password: {
-            required,
-            sameAs: sameAs(userRegistredData.value.password)
-        }
     }
 })
 
-const file = (event: any) => {
-    console.log(userRegistredData.value.avatar);
-    //get the file input value 
-    const file = event.target.files
-    console.log(file);
-    //checking file 
-    if (file[0].type !== "image/jpeg"
-        && file[0].type !== "image/jpg"
-        && file[0].type !== "image/png") {
-        toast.error('Fichier Invalid! Format accepté .png, .jpeg, .jpg, .pdf, .docx, .csv')
-    } else if (file[0].size > 5000000) {//checking file length
-        toast.error('Fichier trop lourd! Taille maximale accepté 5MB')
-    } else {
-        userRegistredData.value.avatar = file[0]
-        console.log(userRegistredData.value.avatar);
-
-        return userRegistredData.value.avatar
-    }
-}
-
 const isSigninDataValid = useVuelidate(userRegistredRequired, userRegistredData)
 
-const registration = async () =>{
+const registration = async () => {
     const dataValid = await isSigninDataValid.value.$validate()
-        if(dataValid){
-            http.post('/auth/signup', userRegistredData.value,{
-                headers: {
-                    'Content-Type': 'multipart/form-data' // Spécifiez le type de contenu comme 'multipart/form-data'
-                }
-            })
-            .then((response)=>{
-               
-                toast.info(response.data) 
+    if (dataValid) {
+        http.post('/auth/signup', userRegistredData.value)
+            .then((response) => {
+
+                toast.info(response.data)
                 let timeoutId = 4000
-                setTimeout(() => { 
+                setTimeout(() => {
                     router.replace('/activate-account')
-                }, timeoutId )
+                }, timeoutId)
             })
             .catch(error => {
                 if (error.response && error.response.status === 400) {
@@ -155,10 +113,9 @@ const registration = async () =>{
                     toast.error(error.message)
                 }
             })
-        }else {
-            toast.error('Oops... Données Indisponibles !')
-        }  
+    } else {
+        toast.error('Oops... Données Indisponibles !')
     }
+}
+
 </script>
-
-
