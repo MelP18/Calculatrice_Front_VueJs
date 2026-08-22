@@ -49,9 +49,9 @@
     background: linear-gradient(145deg, var(--tertiary-color), var(--secondary-color));
 }
 
-.auth-mark .mdi {
-    font-size: 28px;
-    color: var(--white);
+.auth-mark img {
+    width: 28px;
+    height: 28px;
 }
 
 .auth-card h3 {

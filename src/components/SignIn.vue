@@ -2,7 +2,7 @@
 <template>
 
     <form class="auth-card" @submit.prevent="connection" id="card-signin">
-        <RouterLink to="/" class="auth-mark"><span class="mdi mdi-calculator-variant"></span></RouterLink>
+        <RouterLink to="/" class="auth-mark"><img :src="logo" alt="Logo CALMELP" /></RouterLink>
         <h3>Se connecter</h3>
         <p class="subtitle">Accède à ta calculatrice CalMelp</p>
         <div class="auth__field__list">
@@ -33,7 +33,7 @@
             </div>
 
             <div class="field-row-end">
-                <span class="link-muted" id="go-forgot">Mot de passe oublié ?</span>
+                <RouterLink class="link-muted" id="go-forgot" to="/forgot-password">Mot de passe oublié ?</RouterLink>
             </div>
 
             <button class="auth-submit" id="auth-submit">Se connecter</button>
@@ -55,6 +55,7 @@ import { required, email } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 import http from "@/libs/http";
 import router from "@/router";
+import logo from "@/assets/images/logo.svg";
 const showPassword = ref(false)
 
 const userConnectData = ref({

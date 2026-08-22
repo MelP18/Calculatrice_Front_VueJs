@@ -2,7 +2,7 @@
 <template>
    
     <form class="auth-card" @submit.prevent="activateAccount">
-        <RouterLink to="/" class="auth-mark"><span class="mdi mdi-calculator-variant"></span></RouterLink>
+        <RouterLink to="/" class="auth-mark"><img :src="logo" alt="Logo CALMELP" /></RouterLink>
         <h3>Activation de Compte</h3>
         <p class="subtitle">Active ton compte CalMelp</p>
 
@@ -43,6 +43,7 @@ import { required, email, minLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 import http from "@/libs/http";
 import router from "@/router";
+import logo from "@/assets/images/logo.svg";
 
 const activateAccountData = ref({
         email:'',

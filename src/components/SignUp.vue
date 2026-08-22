@@ -1,7 +1,7 @@
 /*=============================++++ HTML ++++=================================*/
 <template>
     <form id="card-signup" class="auth-card" @submit.prevent="registration">
-        <RouterLink to="/" class="auth-mark"><span class="mdi mdi-calculator-variant"></span></RouterLink>
+        <RouterLink to="/" class="auth-mark"><img :src="logo" alt="Logo CALMELP" /></RouterLink>
         <h3>S'inscrire</h3>
         <p class="subtitle">Crée ton compte CalMelp</p>
 
@@ -63,6 +63,7 @@ import { required, email, sameAs } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 import http from "@/libs/http";
 import router from "@/router";
+import logo from "@/assets/images/logo.svg";
 const showPassword = ref(false)
 
 const userRegistredData = ref({

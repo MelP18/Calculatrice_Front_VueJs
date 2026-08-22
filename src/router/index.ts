@@ -4,6 +4,7 @@ import UserInterface from '@/views/user/UserInterface.vue'
 import Login from '@/views/Login.vue'
 import SignUp from '@/views/SignUp.vue'
 import ActivateAccountComponent from '@/views/ActivateAccount.vue'
+import ForgotPassword from '@/views/ForgotPassword.vue'
 import UserLayout from '@/layout/UserLayout.vue'
 import AuthLayout from '@/layout/AuthLayout.vue'
 import Profile from '@/views/user/Profile.vue'
@@ -41,6 +42,11 @@ const router = createRouter({
                     path: '/activate-account',
                     name: 'activateAccount',
                     component: ActivateAccountComponent
+                },
+                {
+                    path: '/forgot-password',
+                    name: 'forgotPassword',
+                    component: ForgotPassword
                 }
             ]
         },
