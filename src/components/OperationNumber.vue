@@ -2,7 +2,7 @@
 <template>
     <div class="bottom__centre__bottom">
         <div class="calculation__number" v-for="element in  numbers">
-            <button @click="show(element)" :style="{'background-color':element.color}" >{{ element.number }}</button>
+            <button @click="show(element)" :class="{ op: !/^[0-9]$/.test(element.number) }">{{ element.number }}</button>
         </div>
     </div>
 </template>
@@ -104,30 +104,31 @@ function show(element:Number){
 .calculation__number button {
     cursor: pointer;
     width: 100%;
-    padding: 6px;
-   /*  background-color: var(--background-button-number); */
-    border: 2px solid var(--background-button-number);
-    border-radius: var(--border-radius-primary);
+    padding: 9px 2px;
+    font-family: var(--font-SMono-regular);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    border-radius: 7px;
+    transition: background .12s ease;
 }
 
 .calculation__number button:hover {
-    background-color: var(--background-button);
-    border: 2px solid var(--background-button);
+    background-color: rgba(255, 255, 255, 0.12);
 }
 
-.calculation__operation button {
-    cursor: pointer;
-    width: 100%;
-    padding: 6px;
-    font-weight: bold;
-    background-color: var(--background-button);
-    border: 2px solid var(--background-button);
-    border-radius: var(--border-radius-primary)
+.calculation__number button:active {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.calculation__operation button:hover {
-    background-color: var(--background-button-hover);
-    border: 1px solid var(--background-button-hover);
-    border: 2px solid var(--background-button-hover);
+.calculation__number button.op {
+    background: rgba(127, 217, 168, 0.14);
+    color: var(--accent-green);
+}
+
+.calculation__number button.op:hover {
+    background-color: rgba(127, 217, 168, 0.24);
 }
 </style>

@@ -89,7 +89,8 @@ function signOut() {
     transition: 0.3s;
 }
 .main {
-    width: calc(100% - 65px);
+    flex: 1;
+    min-width: 0;
     height: 100vh;
     background-color: var(--rgba-background);
 }
@@ -123,6 +124,8 @@ function signOut() {
 }
 .container__header{
     padding: 0 25px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 .header__right {
     display: flex;
@@ -183,6 +186,23 @@ function signOut() {
 .user__connect__username h4 {
     color: var(--color-white);
     font-weight: bold;
+}
+
+@media (max-width: 560px) {
+    .container__header{
+        padding: 0 14px;
+    }
+    .header__right {
+        gap: 10px;
+    }
+    .user__connect {
+        padding: 5px 10px;
+        gap: 6px;
+    }
+    .user__connect span.line,
+    .user__connect__username {
+        display: none;
+    }
 }
 
 ;</style>

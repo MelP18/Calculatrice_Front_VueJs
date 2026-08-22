@@ -273,9 +273,15 @@ main{
 }
 
 .container{
-    padding: 0 15px;
+    padding: 0 25px;
     margin: 0 auto;
     max-width: 1140px;
+}
+
+@media (max-width: 600px) {
+    .container{
+        padding: 0 16px;
+    }
 }
 
 .landing-container{
@@ -294,9 +300,10 @@ main{
     padding: 20px 0;
 }
 .user__main__title h1{
-    font-family: var(--font-Fraunces-semibold);
-    font-size: 1.5rem;
-    letter-spacing: -.3px;
+    font-family: var(--font-extrabold);
+    font-size: 1.25rem;
+    letter-spacing: .5px;
+    text-transform: uppercase;
     color: var(--primary-color);
     margin-bottom: 8px;
 }

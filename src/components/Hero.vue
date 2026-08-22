@@ -118,6 +118,7 @@ function backspace() {
     flex-direction: column;
     justify-content: space-between;
     height: calc(100vh - 69px);
+    max-height: 860px;
     background: var(--hero-bg);
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
