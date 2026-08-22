@@ -3,11 +3,8 @@
     <div class="calculation__bottom__right">
         <div class="bottom__right__top">
             <p @click="clear">effacer tout</p>
-            <div class="mode__dark">
-                <span class="mdi mdi-wrench"></span>
-            </div>
         </div>
-        <OtherFunction/>
+        <OtherFunction @percent="$emit('percent')" @backspace="$emit('backspace')" @equals="$emit('equals')"/>
     </div>
 </template>
 
@@ -16,7 +13,7 @@
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
 import OtherFunction from '@/components/OtherFunction.vue'
-const emits = defineEmits(['delete'])
+const emits = defineEmits(['delete', 'percent', 'backspace', 'equals'])
 function clear(){
     emits('delete')
 }
@@ -47,21 +44,15 @@ function clear(){
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color .15s ease;
 }
 
 .bottom__right__top p:hover {
-    background-color: var(--color-gray-primary);
-    border-radius: var(--border-radius-primary);
-}
-
-.bottom__right__top .mode__dark {
-    padding: 5px;
-    width: 100%;
-    text-align: center;
-}
-
-.bottom__right__top .mode__dark:hover {
-    background-color: var(--color-gray-primary);
-    border-radius: var(--border-radius-primary);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: var(--white);
 }
 </style>

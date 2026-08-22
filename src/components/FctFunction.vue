@@ -13,61 +13,23 @@ import {ref} from 'vue'
 import type {FunctionValue} from '@/Types/functionValue'
 const emits = defineEmits(['seefunction'])
 const functions = ref([
-    {
-        functionval:'a²',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'|a|',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'π',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'ln',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'log',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'√',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'sin',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'cos',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'tan',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'tanh',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'atan',
-        color:'#eaeaeaee'
-    },
-    {
-        functionval:'E',
-        color:'#eaeaeaee'
-    } 
+    { functionval:'sinh', color:'#eaeaeaee' },
+    { functionval:'cosh', color:'#eaeaeaee' },
+    { functionval:'asinh', color:'#eaeaeaee' },
+    { functionval:'acosh', color:'#eaeaeaee' },
+    { functionval:'atanh', color:'#eaeaeaee' },
+    { functionval:'x³', color:'#eaeaeaee' },
+    { functionval:'∛x', color:'#eaeaeaee' },
+    { functionval:'10ˣ', color:'#eaeaeaee' },
+    { functionval:'2ˣ', color:'#eaeaeaee' },
+    { functionval:'log₂', color:'#eaeaeaee' },
+    { functionval:'1/x', color:'#eaeaeaee' },
+    { functionval:'x!', color:'#eaeaeaee' },
 ])
 const functionValue = functions.value
-console.log(functionValue);
 
 function showfunct(item:FunctionValue){
   emits('seefunction',item.functionval)
-  console.log(item.functionval);
 }
 </script>
 /*=============================++++ CSS ++++=================================*/
@@ -93,7 +55,4 @@ function showfunct(item:FunctionValue){
 .calcultion__fonction button:hover {
     background-color: rgba(255, 255, 255, 0.12);
 }
-
-sup {
-    font-size: 8px;
-}</style>
+</style>

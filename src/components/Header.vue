@@ -44,9 +44,8 @@
 /*=============================++++ JS ++++=================================*/
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import Logo from '@/components/Logo.vue'
 import ThemeToggle from './ThemeToggle.vue';
-
+import Logo from './Logo.vue';
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
 
