@@ -204,8 +204,7 @@ function signOut() {
         display: none;
     }
 }
-
-;</style>
+</style>
 
 
 
