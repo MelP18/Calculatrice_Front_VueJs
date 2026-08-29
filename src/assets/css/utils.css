@@ -88,6 +88,11 @@
     font-family: var(--font-bold);
 }
 
+.field label .required {
+    color: var(--color-danger);
+    margin-left: 2px;
+}
+
 .field-input {
     display: flex;
     align-items: center;
