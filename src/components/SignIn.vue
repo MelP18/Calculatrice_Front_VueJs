@@ -53,7 +53,7 @@ import { toast } from 'vue3-toastify'
 import { computed, ref, onMounted } from 'vue'
 import { required, email } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-import http from "@/libs/http";
+import { signIn } from "@/services/auth.service";
 import router from "@/router";
 import logo from "@/assets/images/logo.svg";
 const showPassword = ref(false)
@@ -80,10 +80,8 @@ const isLoginDataValid = useVuelidate(userConnectRequired, userConnectData)
 const connection = async () => {
     const dataValid = await isLoginDataValid.value.$validate()
     if (dataValid) {
-        http.post('/auth/signin', userConnectData.value)
-            .then((response) => {
-                const accessToken = response.data
-                http.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+        signIn(userConnectData.value)
+            .then((accessToken) => {
                 localStorage.setItem('tokenUser', accessToken)
                 toast.success('Connexion Etablie !')
                 let timeoutId = 3000
