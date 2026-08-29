@@ -7,11 +7,10 @@
                 <nav class="header__menu" :class="{ 'header__menu--open': isMenuOpen }">
                     <ul class="header__menu__list">
                         <li class="header__menu__list__item">
-                            <RouterLink to="/" class="menu" @click="closeMenu">Accueil</RouterLink>
-                            <!-- <a href="/" class="active">Home</a> -->
+                            <RouterLink to="/" class="menu" :class="{ active: activeSection === 'home' }" @click="goHome">Accueil</RouterLink>
                         </li>
                         <li class="header__menu__list__item">
-                            <a href="#features" class="menu" @click="closeMenu">Fonctionnalités</a>
+                            <a href="#features" class="menu" :class="{ active: activeSection === 'features' }" @click="setActiveSection('features')">Fonctionnalités</a>
                         </li>
 
                         <li class="header__menu__list__item">
@@ -48,6 +47,8 @@ import ThemeToggle from './ThemeToggle.vue';
 import Logo from './Logo.vue';
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
+const activeSection = ref('home')
+let sectionObserver: IntersectionObserver | null = null
 
 function handleScroll() {
     isScrolled.value = window.scrollY > 10
@@ -57,8 +58,35 @@ function closeMenu() {
     isMenuOpen.value = false
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll))
-onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+function setActiveSection(section: string) {
+    activeSection.value = section
+    closeMenu()
+}
+
+function goHome() {
+    setActiveSection('home')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    const featuresEl = document.getElementById('features')
+    if (featuresEl) {
+        sectionObserver = new IntersectionObserver(
+            ([entry]) => {
+                activeSection.value = entry.isIntersecting ? 'features' : 'home'
+            },
+            { rootMargin: '-50% 0px -50% 0px' }
+        )
+        sectionObserver.observe(featuresEl)
+    }
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+    sectionObserver?.disconnect()
+})
 </script>
 
 
@@ -131,7 +159,7 @@ background: var(--white); color: var(--base-color); padding:9px 20px; border-rad
     color: inherit;
 }
 
-.router-link-exact-active {
+.header__menu__list__item .menu.active {
     color: var(--white) !important;
     padding-bottom: 1px;
     border-bottom: 2px solid var(--white);
