@@ -1,17 +1,17 @@
 import { defineStore} from "pinia";
 import { ref } from "vue";
 import type { Calculation } from "@/Types/calculation";
-import http from "@/libs/http";
+import { addCalculation as addCalculationRequest, getHistory } from "@/services/home.service";
 import { toast } from 'vue3-toastify';
 export const userOpeationStore = defineStore("calculations", () => {
 
     //const usercalculation = ref<Calculation[]>([])
-    
+
     async function addCalculation(calculation:Calculation) {
         if(calculation){
-            http.post('/home/calculation', calculation)
-            .then((response)=>{
-                toast.info(response.data) 
+            addCalculationRequest(calculation)
+            .then((data)=>{
+                toast.info(data)
             })
             .catch(error => {
                 if (error.response && error.response.status === 400) {
@@ -25,23 +25,18 @@ export const userOpeationStore = defineStore("calculations", () => {
             })
         }else {
             toast.error('Erreur !')
-        }  
-        
+        }
+
     }
-    
+
     const userCalculation = ref<Calculation[]>([])
     async function getCalculation() {
-        const calculation = await http.get('/home/history')
-        if(calculation){
-            userCalculation.value = calculation.data
-            console.log(userCalculation.value);
-            
-          return userCalculation.value   
-
-        }else {
+        try {
+            userCalculation.value = await getHistory()
+            return userCalculation.value
+        } catch (error) {
             toast.error('Erreur !')
-        }  
-        
+        }
     }
   
     return {
