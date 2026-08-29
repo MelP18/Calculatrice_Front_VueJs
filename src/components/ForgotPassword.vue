@@ -74,7 +74,7 @@ import { toast } from 'vue3-toastify'
 import { computed, ref } from 'vue'
 import { required, email, minLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-import http from "@/libs/http";
+import { forgotPassword, resetPassword as resetPasswordRequest } from "@/services/auth.service";
 import router from "@/router";
 import logo from "@/assets/images/logo.svg";
 
@@ -99,9 +99,9 @@ const isForgotDataValid = useVuelidate(forgotRequired, forgotData)
 const requestCode = async () => {
     const dataValid = await isForgotDataValid.value.$validate()
     if (dataValid) {
-        http.post('/auth/forgot-password', forgotData.value)
-            .then((response) => {
-                toast.info(response.data)
+        forgotPassword(forgotData.value)
+            .then((message) => {
+                toast.info(message)
                 step.value = 2
             })
             .catch(error => {
@@ -140,13 +140,13 @@ const isResetDataValid = useVuelidate(resetRequired, resetData)
 const resetPassword = async () => {
     const dataValid = await isResetDataValid.value.$validate()
     if (dataValid) {
-        http.post('/auth/reset-password', {
+        resetPasswordRequest({
             email: forgotData.value.email,
             code: resetData.value.code,
             password: resetData.value.password,
         })
-            .then((response) => {
-                toast.success(response.data)
+            .then((message) => {
+                toast.success(message)
                 let timeoutId = 3000
                 setTimeout(() => {
                     router.replace('/signin')
