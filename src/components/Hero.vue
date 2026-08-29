@@ -160,14 +160,14 @@ function backspace() {
     margin-bottom: 22px;
 }
 
-.home-eyebrow::before {
+/* .home-eyebrow::before {
     content: '';
     width: 7px;
     height: 7px;
     border-radius: 50%;
     background: var(--accent-green);
     box-shadow: 0 0 8px var(--accent-green);
-}
+} */
 
 .home-hero h1 {
     font-family: var(--font-Fraunces-semibold);
