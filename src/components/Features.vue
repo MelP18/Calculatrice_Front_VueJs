@@ -43,14 +43,14 @@
     margin-bottom: 22px;
 }
 
-.home-eyebrow::before {
+/* .home-eyebrow::before {
     content: '';
     width: 7px;
     height: 7px;
     border-radius: 50%;
     background: var(--tertiary-color);
     box-shadow: 0 0 8px var(--tertiary-color);
-}
+} */
 
 .feature-section {
     max-width: 940px;
