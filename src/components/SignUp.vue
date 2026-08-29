@@ -7,7 +7,11 @@
 
         <div class="auth__field__list">
             <div class="field">
-                <label>Pseudonyme</label>
+                <!-- <label>Avatar</label> -->
+                <Avatar v-model="avatarFile" />
+            </div>
+            <div class="field">
+                <label>Pseudonyme <span class="required">*</span></label>
                 <div class="field-input">
                     <span class="mdi mdi-account-outline"></span>
                     <input type="text" id="signup-username" v-model="userRegistredData.username"
@@ -18,19 +22,19 @@
                 </span>
             </div>
             <div class="field">
-                <label>E-mail</label>
+                <label>E-mail <span class="required">*</span></label>
                 <div class="field-input">
                     <span class="mdi mdi-email-outline"></span>
                     <input type="email" id="signup-email" v-model="userRegistredData.email"
                         placeholder="toi@exemple.com">
                 </div>
-                <span class="error" 
+                <span class="error"
                     v-for="error in isSigninDataValid.email.$errors" :key="error.$uid">
                     {{ error.$message }}
                 </span>
             </div>
             <div class="field">
-                <label>Mot de passe</label>
+                <label>Mot de passe <span class="required">*</span></label>
                 <div class="field-input">
                     <span class="mdi mdi-lock-outline"></span>
                     <input  :type="showPassword ? 'text' : 'password'" id="signup-password" v-model="userRegistredData.password"
@@ -61,10 +65,12 @@ import { toast } from 'vue3-toastify'
 import { ref, computed } from 'vue'
 import { required, email, sameAs } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-import http from "@/libs/http";
+import { signUp } from "@/services/auth.service";
 import router from "@/router";
 import logo from "@/assets/images/logo.svg";
+import Avatar from "@/components/Avatar.vue";
 const showPassword = ref(false)
+const avatarFile = ref<File | null>(null)
 
 const userRegistredData = ref({
     username: '',
@@ -94,10 +100,9 @@ const isSigninDataValid = useVuelidate(userRegistredRequired, userRegistredData)
 const registration = async () => {
     const dataValid = await isSigninDataValid.value.$validate()
     if (dataValid) {
-        http.post('/auth/signup', userRegistredData.value)
-            .then((response) => {
-
-                toast.info(response.data)
+        signUp(userRegistredData.value)
+            .then((message) => {
+                toast.info(message)
                 let timeoutId = 4000
                 setTimeout(() => {
                     router.replace('/activate-account')
