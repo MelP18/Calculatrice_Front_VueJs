@@ -41,7 +41,7 @@ import { ref,computed} from 'vue'
 import { toast } from 'vue3-toastify';
 import { required, email, minLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-import http from "@/libs/http";
+import { verifyCode } from "@/services/auth.service";
 import router from "@/router";
 import logo from "@/assets/images/logo.svg";
 
@@ -67,9 +67,9 @@ const isCodeValid = useVuelidate(activateAccountRequired, activateAccountData)
 const activateAccount = async () => {
     const validCode = await isCodeValid.value.$validate()
         if (validCode) {
-            http.post('/auth/verify-code', activateAccountData.value)
-                .then((response) => {
-                    toast.info(response.data)
+            verifyCode(activateAccountData.value)
+                .then((message) => {
+                    toast.info(message)
                     let timeoutId = 4000
                     setTimeout(() => {
                         router.replace('/signin')
